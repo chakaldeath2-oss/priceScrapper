@@ -30,7 +30,7 @@ const lista = datos.historial;
 if (!lista || lista.length < 1)
     throw "Sin historial";
 
-const margen = 40;
+const margen = 80;
 
 const ancho = 900 - margen * 2;
 
@@ -44,6 +44,7 @@ const min = Math.min(...precios);
 
 let puntos = "";
 
+// Calcular puntos del gráfico
 for (let i = 0; i < lista.length; i++) {
 
     const x =
@@ -58,6 +59,85 @@ for (let i = 0; i < lista.length; i++) {
 
 }
 
+// Dibujar ejes
+// Eje X (horizontal)
+svg.innerHTML +=
+`<line
+    x1="${margen}"
+    y1="${margen + alto}"
+    x2="${margen + ancho}"
+    y2="${margen + alto}"
+    stroke="black"
+    stroke-width="2"/>`;
+
+// Eje Y (vertical)
+svg.innerHTML +=
+`<line
+    x1="${margen}"
+    y1="${margen}"
+    x2="${margen}"
+    y2="${margen + alto}"
+    stroke="black"
+    stroke-width="2"/>`;
+
+// Etiquetas del eje Y (precios)
+const numIntervalos = 5;
+for (let i = 0; i <= numIntervalos; i++) {
+    const precio = min + (max - min) * (numIntervalos - i) / numIntervalos;
+    const y = margen + i * (alto / numIntervalos);
+    
+    svg.innerHTML +=
+    `<text
+        x="${margen - 10}"
+        y="${y + 4}"
+        text-anchor="end"
+        font-size="12"
+        fill="black">
+        ${precio.toFixed(0)}€
+    </text>`;
+    
+    // Línea de rejilla horizontal
+    svg.innerHTML +=
+    `<line
+        x1="${margen}"
+        y1="${y}"
+        x2="${margen + ancho}"
+        y2="${y}"
+        stroke="#e0e0e0"
+        stroke-width="1"
+        stroke-dasharray="5,5"/>`;
+}
+
+// Etiquetas del eje X (fechas)
+for (let i = 0; i < lista.length; i++) {
+    const x = margen + (lista.length > 1 ? i * (ancho / (lista.length - 1)) : ancho / 2);
+    const fecha = lista[i].fecha;
+    const fechaCorta = fecha.split(" ")[0]; // YYYY-MM-DD
+    
+    svg.innerHTML +=
+    `<text
+        x="${x}"
+        y="${margen + alto + 25}"
+        text-anchor="middle"
+        font-size="11"
+        fill="black">
+        ${fechaCorta}
+    </text>`;
+}
+
+// Etiqueta del eje Y
+svg.innerHTML +=
+`<text
+    x="${20}"
+    y="${margen + alto / 2}"
+    text-anchor="middle"
+    font-size="14"
+    fill="black"
+    transform="rotate(-90 20 ${margen + alto / 2})">
+    Precio (€)
+</text>`;
+
+// Dibujar la línea del gráfico
 if (lista.length > 1) {
     svg.innerHTML +=
     `<polyline
@@ -67,6 +147,7 @@ if (lista.length > 1) {
     points="${puntos}"/>`;
 }
 
+// Dibujar los puntos
 for (let i = 0; i < lista.length; i++) {
 
     const x =
