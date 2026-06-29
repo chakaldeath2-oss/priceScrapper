@@ -39,6 +39,7 @@ for (const juego of juegos) {
     }
 
     let cambioHtml = "";
+    let precioColorClass = "";
 
 	const lista = historialMap[juego.id];
 
@@ -56,6 +57,7 @@ for (const juego of juegos) {
 					▲ +${diferencia} €
 				</div>
 			`;
+			precioColorClass = "precio-subida";
 
 		}
 		else if (diferencia < 0) {
@@ -65,6 +67,7 @@ for (const juego of juegos) {
 					▼ ${Math.abs(diferencia)} €
 				</div>
 			`;
+			precioColorClass = "precio-bajada";
 
 		}
 
@@ -82,7 +85,7 @@ for (const juego of juegos) {
 		${juego.nombre}
 		</div>
 
-		<div class="precio">
+		<div class="precio ${precioColorClass}">
 		${juego.precioVale} €
 		</div>
 
