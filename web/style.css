@@ -8,16 +8,60 @@
 
 body{
 
-    background:#171717;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
     color:white;
-    font-family:Segoe UI;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
 
 }
 
 header{
 
-    text-align:center;
-    padding:25px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-bottom: 2px solid #00ff88;
+    padding: 30px 20px;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.1);
+    text-align: center;
+
+}
+
+header a {
+
+    color: #00ff88;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-bottom: 15px;
+
+}
+
+header a:hover {
+
+    color: #00ff88;
+    transform: translateX(-5px);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+
+}
+
+header h1 {
+
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+
+}
+
+main {
+
+    padding: 40px 20px;
 
 }
 
@@ -38,21 +82,20 @@ header{
 
 .card{
 
-    background:#262626;
-
+    background: linear-gradient(135deg, #1a1a1a 0%, #262626 100%);
     border-radius:12px;
-
     overflow:hidden;
-
-    transition:.25s;
-
-    border:3px solid transparent;
+    transition: all 0.3s ease;
+    border:2px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 
 }
 
 .card:hover{
 
-    transform:scale(1.05);
+    transform:scale(1.08);
+    border-color: #00ff88;
+    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.2);
 
 }
 
@@ -60,44 +103,55 @@ header{
 
     width:100%;
     display:block;
+    transition: transform 0.3s ease;
+
+}
+
+.card:hover img {
+
+    transform: scale(1.05);
 
 }
 
 .nombre{
 
-    padding:8px;
-
+    padding:12px;
     text-align:center;
-
-    min-height:42px;
-
+    min-height:50px;
     font-size:14px;
+    font-weight: 500;
+    color: #e0e0e0;
 
 }
 
 .precio{
 
     text-align:center;
-
-    font-size:28px;
-
+    font-size:32px;
     color:#00ff88;
-
     padding-bottom:12px;
-
     font-weight:bold;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 
 }
 
 .nuevo{
 
     border-color:orange;
-
     box-shadow:
+        0 0 15px rgba(255, 165, 0, 0.4),
+        inset 0 0 15px rgba(255, 165, 0, 0.1);
 
-        0 0 10px orange,
+}
 
-        0 0 25px gold;
+.nuevo::before {
+
+    content: "🆕 NEW";
+    display: block;
+    font-size: 10px;
+    color: orange;
+    font-weight: bold;
+    padding: 4px;
 
 }
 
@@ -144,45 +198,131 @@ grid-template-columns:repeat(2,1fr);
 .subida{
 
     text-align:center;
-    color:#00d000;
+    color:#ff4444;
     font-weight:bold;
     padding-bottom:12px;
+    font-size: 14px;
 
 }
 
 .bajada{
 
     text-align:center;
-    color:#ff4040;
+    color:#00ff88;
     font-weight:bold;
     padding-bottom:12px;
+    font-size: 14px;
 
 }
 
 #detalle{
 
-    width:900px;
-
+    max-width:1000px;
     margin:40px auto;
-
     text-align:center;
+    padding: 0 20px;
 
 }
 
 #detalle img{
 
-    width:300px;
-
+    width:400px;
+    max-width: 100%;
     border-radius:12px;
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+    border: 2px solid #00ff88;
+    transition: transform 0.3s ease;
+
+}
+
+#detalle img:hover {
+
+    transform: scale(1.03);
+
+}
+
+#detalle h2 {
+
+    font-size: 32px;
+    margin-top: 20px;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 
 }
 
 #grafico{
 
-    margin-top:30px;
+    margin-top:40px;
+    border: 2px solid #00ff88;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.15);
+    border-radius: 8px;
+    padding: 20px;
 
-    border:1px solid #444;
+}
 
-    background:#222;
+#tabla-historial {
+
+    margin-top: 50px;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #262626 100%);
+    border-radius: 12px;
+    border: 2px solid #00ff88;
+    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.15);
+
+}
+
+#tabla-historial table {
+
+    width: 100%;
+    border-collapse: collapse;
+    background: #0f0f0f;
+
+}
+
+#tabla-historial table thead {
+
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6f 100%);
+    color: #0f0f0f;
+
+}
+
+#tabla-historial table th,
+#tabla-historial table td {
+
+    padding: 15px 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+    font-weight: 500;
+
+}
+
+#tabla-historial table th {
+
+    font-weight: 700;
+    font-size: 14px;
+
+}
+
+#tabla-historial table tbody tr {
+
+    background: #1a1a1a;
+    transition: all 0.3s ease;
+
+}
+
+#tabla-historial table tbody tr:hover {
+
+    background: #262626;
+    border-left: 3px solid #00ff88;
+    box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.1);
+
+}
+
+#tabla-historial table tbody td:first-child {
+
+    font-family: 'Courier New', monospace;
+    color: #00ff88;
 
 }
