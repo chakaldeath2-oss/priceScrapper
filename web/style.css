@@ -12,64 +12,18 @@ html, body {
 
 body{
 
-    background: linear-gradient(135deg, #0a0e27 0%, #16213e 100%);
-    color: #e0e0e0;
+    background: #171717;
+    color:white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
-    line-height: 1.6;
 
 }
 
 header{
 
-    background: linear-gradient(135deg, #0f1729 0%, #1a2847 100%);
-    border-bottom: 3px solid #00d4ff;
-    padding: 30px 20px;
-    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+    text-align:center;
+    padding:25px;
 
-}
-
-header a {
-
-    color: #00d4ff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    display: inline-block;
-    margin-bottom: 15px;
-    padding: 8px 16px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-
-}
-
-header a:hover {
-
-    color: #00f0ff;
-    transform: translateX(-5px);
-    border-color: #00d4ff;
-    background: rgba(0, 212, 255, 0.05);
-
-}
-
-header h1 {
-
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-align: center;
-
-}
-
-main {
-    padding: 40px 20px;
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
 #grid{
@@ -89,21 +43,21 @@ main {
 
 .card{
 
-    background: linear-gradient(135deg, #0f1729 0%, #1a2847 100%);
+    background:#262626;
+
     border-radius:12px;
+
     overflow:hidden;
-    transition: all 0.3s ease;
-    border:2px solid #2a3f5f;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
+
+    transition:.25s;
+
+    border:3px solid transparent;
 
 }
 
 .card:hover{
 
-    transform:scale(1.08);
-    border-color: #00d4ff;
-    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.25);
+    transform:scale(1.05);
 
 }
 
@@ -111,57 +65,44 @@ main {
 
     width:100%;
     display:block;
-    transition: transform 0.3s ease;
-    aspect-ratio: 1;
-    object-fit: cover;
-
-}
-
-.card:hover img {
-
-    transform: scale(1.05);
 
 }
 
 .nombre{
 
-    padding:12px;
+    padding:8px;
+
     text-align:center;
-    min-height:50px;
+
+    min-height:42px;
+
     font-size:14px;
-    font-weight: 500;
-    color: #c0c0c0;
 
 }
 
 .precio{
 
     text-align:center;
+
     font-size:28px;
-    color:#00d4ff;
-    padding: 8px 12px 12px;
+
+    color:#00ff88;
+
+    padding-bottom:12px;
+
     font-weight:bold;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
 
 }
 
 .nuevo{
 
-    border-color:#7c3aed;
+    border-color:orange;
+
     box-shadow:
-        0 0 15px rgba(124, 58, 237, 0.4),
-        inset 0 0 15px rgba(124, 58, 237, 0.1);
 
-}
+        0 0 10px orange,
 
-.nuevo::before {
-
-    content: "🆕 NEW";
-    display: block;
-    font-size: 10px;
-    color: #a78bfa;
-    font-weight: bold;
-    padding: 4px;
+        0 0 25px gold;
 
 }
 
@@ -208,20 +149,18 @@ grid-template-columns:repeat(2,1fr);
 .subida{
 
     text-align:center;
-    color:#ff6b6b;
+    color:#00d000;
     font-weight:bold;
-    padding: 8px 0;
-    font-size: 14px;
+    padding-bottom:12px;
 
 }
 
 .bajada{
 
     text-align:center;
-    color:#51cf66;
+    color:#ff4040;
     font-weight:bold;
-    padding: 8px 0;
-    font-size: 14px;
+    padding-bottom:12px;
 
 }
 
@@ -237,6 +176,8 @@ grid-template-columns:repeat(2,1fr);
     border-radius: 12px;
     border: 2px solid #2a3f5f;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    max-width: 1200px;
+    margin: 40px auto;
 }
 
 .detalle-left {
@@ -390,23 +331,5 @@ grid-template-columns:repeat(2,1fr);
 
     .detalle-left img {
         width: 100%;
-    }
-
-    header h1 {
-        font-size: 32px;
-    }
-
-    .grafico-container {
-        padding: 15px;
-    }
-
-    #tabla-historial table thead th {
-        padding: 12px;
-        font-size: 12px;
-    }
-
-    #tabla-historial table tbody td {
-        padding: 10px 12px;
-        font-size: 12px;
     }
 }
