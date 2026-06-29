@@ -36,6 +36,10 @@ const ancho = 900 - margen * 2;
 
 const alto = 350 - margen * 2;
 
+// Set SVG viewBox for responsiveness
+svg.setAttribute("viewBox", `0 0 900 350`);
+svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
 const precios = lista.map(x => x.vale);
 
 const max = Math.max(...precios);
@@ -67,7 +71,7 @@ svg.innerHTML +=
     y1="${margen + alto}"
     x2="${margen + ancho}"
     y2="${margen + alto}"
-    stroke="black"
+    stroke="#00d4ff"
     stroke-width="2"/>`;
 
 // Eje Y (vertical)
@@ -77,7 +81,7 @@ svg.innerHTML +=
     y1="${margen}"
     x2="${margen}"
     y2="${margen + alto}"
-    stroke="black"
+    stroke="#00d4ff"
     stroke-width="2"/>`;
 
 // Etiquetas del eje Y (precios)
@@ -92,7 +96,8 @@ for (let i = 0; i <= numIntervalos; i++) {
         y="${y + 4}"
         text-anchor="end"
         font-size="12"
-        fill="black">
+        fill="#a0d4ff"
+        font-weight="500">
         ${precio.toFixed(0)}€
     </text>`;
     
@@ -103,7 +108,7 @@ for (let i = 0; i <= numIntervalos; i++) {
         y1="${y}"
         x2="${margen + ancho}"
         y2="${y}"
-        stroke="#e0e0e0"
+        stroke="rgba(0, 212, 255, 0.15)"
         stroke-width="1"
         stroke-dasharray="5,5"/>`;
 }
@@ -120,7 +125,8 @@ for (let i = 0; i < lista.length; i++) {
         y="${margen + alto + 25}"
         text-anchor="middle"
         font-size="11"
-        fill="black">
+        fill="#a0d4ff"
+        font-weight="500">
         ${fechaCorta}
     </text>`;
 }
@@ -132,7 +138,8 @@ svg.innerHTML +=
     y="${margen + alto / 2}"
     text-anchor="middle"
     font-size="14"
-    fill="black"
+    fill="#00d4ff"
+    font-weight="700"
     transform="rotate(-90 20 ${margen + alto / 2})">
     Precio (€)
 </text>`;
@@ -142,7 +149,7 @@ if (lista.length > 1) {
     svg.innerHTML +=
     `<polyline
     fill="none"
-    stroke="orange"
+    stroke="#00d4ff"
     stroke-width="3"
     points="${puntos}"/>`;
 }
@@ -164,7 +171,9 @@ for (let i = 0; i < lista.length; i++) {
         cx="${x}"
         cy="${y}"
         r="5"
-        fill="red">
+        fill="#00d4ff"
+        stroke="#0a0e27"
+        stroke-width="2">
     </circle>`;
 
 }
