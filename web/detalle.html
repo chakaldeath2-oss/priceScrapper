@@ -13,6 +13,40 @@
 
 <link rel="stylesheet" href="style.css">
 
+<style>
+	#tabla-historial {
+		margin-top: 40px;
+		padding: 20px;
+	}
+
+	#tabla-historial table {
+		width: 100%;
+		border-collapse: collapse;
+		background: #f9f9f9;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	}
+
+	#tabla-historial table thead {
+		background: #333;
+		color: white;
+	}
+
+	#tabla-historial table th,
+	#tabla-historial table td {
+		padding: 12px;
+		text-align: left;
+		border-bottom: 1px solid #ddd;
+	}
+
+	#tabla-historial table tbody tr:hover {
+		background: #f0f0f0;
+	}
+
+	#tabla-historial table th {
+		font-weight: bold;
+	}
+</style>
+
 </head>
 
 <body>
@@ -37,6 +71,8 @@
         height="350">
 
     </svg>
+
+	<div id="tabla-historial"></div>
 
 </div>
 
