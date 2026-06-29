@@ -1,4 +1,4 @@
-﻿// Generado automÃ¡ticamente
+// Generado automáticamente
 
 const historial = [
     {
@@ -464,6 +464,11 @@ const historial = [
     {
         "id":  "811949033192",
         "historial":  [
+                          {
+                              "fecha":  "2026-06-25 16:09:14",
+                              "vale":  38,
+                              "efectivo":  27
+                          },
                           {
                               "fecha":  "2026-06-29 16:09:14",
                               "vale":  40,
