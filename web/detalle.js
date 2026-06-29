@@ -27,7 +27,7 @@ if (!datos) {
 
 const lista = datos.historial;
 
-if (!datos || lista.length < 2)
+if (!lista || lista.length < 1)
     throw "Sin historial";
 
 const margen = 40;
@@ -36,7 +36,7 @@ const ancho = 900 - margen * 2;
 
 const alto = 350 - margen * 2;
 
-const precios = datos.map(x => x.precio);
+const precios = lista.map(x => x.vale);
 
 const max = Math.max(...precios);
 
@@ -48,36 +48,34 @@ for (let i = 0; i < lista.length; i++) {
 
     const x =
         margen +
-        i * (ancho / (lista.length - 1));
+        (lista.length > 1 ? i * (ancho / (lista.length - 1)) : ancho / 2);
 
     const y =
         margen +
-        (max - lista[i].vale)
-        * alto
-        / (max - min || 1);
+        (max > min ? (max - lista[i].vale) * alto / (max - min) : alto / 2);
 
     puntos += x + "," + y + " ";
 
 }
 
-svg.innerHTML +=
-`<polyline
-fill="none"
-stroke="orange"
-stroke-width="3"
-points="${puntos}"/>`;
+if (lista.length > 1) {
+    svg.innerHTML +=
+    `<polyline
+    fill="none"
+    stroke="orange"
+    stroke-width="3"
+    points="${puntos}"/>`;
+}
 
 for (let i = 0; i < lista.length; i++) {
 
     const x =
         margen +
-        i * (ancho / (lista.length - 1));
+        (lista.length > 1 ? i * (ancho / (lista.length - 1)) : ancho / 2);
 
     const y =
         margen +
-        (max - lista[i].vale)
-        * alto
-        / (max - min || 1);
+        (max > min ? (max - lista[i].vale) * alto / (max - min) : alto / 2);
 
     svg.innerHTML +=
 
@@ -89,3 +87,34 @@ for (let i = 0; i < lista.length; i++) {
     </circle>`;
 
 }
+
+// Generar tabla de historial
+const tabla = document.getElementById("tabla-historial");
+let htmlTabla = `
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Vale (€)</th>
+                <th>Efectivo (€)</th>
+            </tr>
+        </thead>
+        <tbody>
+`;
+
+for (const entrada of lista) {
+    htmlTabla += `
+            <tr>
+                <td>${entrada.fecha}</td>
+                <td>${entrada.vale}</td>
+                <td>${entrada.efectivo}</td>
+            </tr>
+    `;
+}
+
+htmlTabla += `
+        </tbody>
+    </table>
+`;
+
+tabla.innerHTML = htmlTabla;
