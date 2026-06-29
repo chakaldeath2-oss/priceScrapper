@@ -261,7 +261,7 @@ grid-template-columns:repeat(2,1fr);
 
 #tabla-historial table thead th {
     padding: 16px;
-    text-align: left;
+    text-align: center;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.5px;
@@ -287,19 +287,13 @@ grid-template-columns:repeat(2,1fr);
     padding: 14px 16px;
     color: #e0e0e0;
     font-size: 14px;
+    text-align: center;
 }
 
 #tabla-historial table tbody td:first-child {
     font-family: 'Courier New', monospace;
     color: #00d4ff;
     font-weight: 600;
-}
-
-#tabla-historial table tbody td:nth-child(2),
-#tabla-historial table tbody td:nth-child(3) {
-    text-align: right;
-    font-weight: 500;
-    color: #a0d4ff;
 }
 
 #tabla-historial table tbody td.precio-subida {
