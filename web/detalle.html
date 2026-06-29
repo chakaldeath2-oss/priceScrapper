@@ -13,45 +13,6 @@
 
 <link rel="stylesheet" href="style.css">
 
-<style>
-	#tabla-historial {
-		margin-top: 40px;
-		padding: 20px;
-	}
-
-	#tabla-historial table {
-		width: 100%;
-		border-collapse: collapse;
-		background: white;
-		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-	}
-
-	#tabla-historial table thead {
-		background: #333;
-		color: white;
-	}
-
-	#tabla-historial table th,
-	#tabla-historial table td {
-		padding: 12px;
-		text-align: left;
-		border-bottom: 1px solid #ddd;
-		color: #333;
-	}
-
-	#tabla-historial table tbody tr {
-		background: white;
-	}
-
-	#tabla-historial table tbody tr:hover {
-		background: #f0f0f0;
-	}
-
-	#tabla-historial table th {
-		font-weight: bold;
-	}
-</style>
-
 </head>
 
 <body>
@@ -64,22 +25,27 @@
 
 </header>
 
+<main>
+
 <div id="detalle">
 
-    <img id="imagen">
+    <!-- LEFT COLUMN: Image and Price -->
+    <div class="detalle-left">
+        <img id="imagen" alt="Producto">
+        <h2 id="precio"></h2>
+    </div>
 
-    <h2 id="precio"></h2>
-
-    <svg
-        id="grafico"
-        width="900"
-        height="350">
-
-    </svg>
-
-	<div id="tabla-historial"></div>
+    <!-- RIGHT COLUMN: Graph and Table -->
+    <div class="detalle-right">
+        <div class="grafico-container">
+            <svg id="grafico" width="100%" height="400"></svg>
+        </div>
+        <div id="tabla-historial"></div>
+    </div>
 
 </div>
+
+</main>
 
 <script src="juegos.js"></script>
 <script src="historial.js"></script>
