@@ -171,7 +171,7 @@ for (let i = 0; i < lista.length; i++) {
         cx="${x}"
         cy="${y}"
         r="5"
-        fill="#00d4ff"
+        fill="#ff6b6b"
         stroke="#0a0e27"
         stroke-width="2">
     </circle>`;
@@ -192,11 +192,24 @@ let htmlTabla = `
         <tbody>
 `;
 
-for (const entrada of lista) {
+for (let i = 0; i < lista.length; i++) {
+    const entrada = lista[i];
+    let priceColorClass = "";
+    
+    // Determine price color based on direction
+    if (i > 0) {
+        const diferencia = entrada.vale - lista[i - 1].vale;
+        if (diferencia > 0) {
+            priceColorClass = "precio-subida";
+        } else if (diferencia < 0) {
+            priceColorClass = "precio-bajada";
+        }
+    }
+    
     htmlTabla += `
             <tr>
                 <td>${entrada.fecha}</td>
-                <td>${entrada.vale}</td>
+                <td class="${priceColorClass}">${entrada.vale}</td>
                 <td>${entrada.efectivo}</td>
             </tr>
     `;
