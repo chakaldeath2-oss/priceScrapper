@@ -57,19 +57,16 @@ if (Test-Path $juegosJson) {
 $historial = @()
 
 if (Test-Path $historialJson) {
-
     try {
-
         $tmp = Get-Content $historialJson -Raw | ConvertFrom-Json
-
         if ($tmp) {
-            $historial = @($tmp)
+            # Forzamos con @() para que siempre sea un array controlable
+            $historial = @($tmp) 
         }
-
     }
     catch {}
-
 }
+
 
 # ==========================================
 # API
@@ -213,7 +210,7 @@ foreach($id in $ids){
 
         if($ultimo.vale -ne $juego.precioVale){
 
-            Write-Host "Cambio de precio -> $($juego.precioVale) Ä" -ForegroundColor Cyan
+            Write-Host "Cambio de precio -> $($juego.precioVale) ‚Ç¨" -ForegroundColor Cyan
 
             $lista += [PSCustomObject]@{
 
@@ -249,7 +246,7 @@ Out-File $juegosJson -Encoding utf8
 
 $js=@"
 // ============================================
-// Generado autom·ticamente
+// Generado autom√°ticamente
 // ============================================
 
 const juegos = $($juegos | ConvertTo-Json -Depth 10);
@@ -261,11 +258,11 @@ $js | Out-File $juegosJs -Encoding utf8
 # Guardar historial.json
 # ============================================
 
-$historial=$historial|Sort-Object id
+$historial = $historial | Sort-Object id
 
-$historial |
-ConvertTo-Json -Depth 20 |
-Out-File $histJson -Encoding utf8
+# Cambiamos la tuber√≠a por -InputObject para proteger la estructura del array
+ConvertTo-Json -InputObject $historial -Depth 20 | Out-File $historialJson -Encoding utf8
+
 
 # ============================================
 # Generar historial.js
@@ -273,13 +270,13 @@ Out-File $histJson -Encoding utf8
 
 $js=@"
 // ============================================
-// Generado autom·ticamente
+// Generado autom√°ticamente
 // ============================================
 
 const historial = $($historial | ConvertTo-Json -Depth 20);
 "@
 
-$js | Out-File $histJs -Encoding utf8
+$js | Out-File $historialJs -Encoding utf8
 
 # ============================================
 # Resumen
