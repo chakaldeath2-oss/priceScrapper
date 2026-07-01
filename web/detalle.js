@@ -7,9 +7,6 @@ const juego = juegos.find(g => g.id == id);
 document.getElementById("titulo").textContent =
     juego.nombre;
 
-document.getElementById("precio").textContent =
-    juego.precioVale + " €";
-
 document.getElementById("imagen").src =
     juego.imagen;
 
@@ -30,6 +27,28 @@ const lista = datos.historial;
 if (!lista || lista.length < 1)
     throw "Sin historial";
 
+// Calculate highest price
+const precios = lista.map(x => x.vale);
+const maxPrecio = Math.max(...precios);
+const precioActual = lista[lista.length - 1].vale;
+const esMaximo = precioActual === maxPrecio;
+
+// Display highest price info
+const priceInfoContainer = document.querySelector(".detalle-left");
+const priceInfoDiv = document.createElement("div");
+priceInfoDiv.className = "price-info";
+priceInfoDiv.innerHTML = `
+    <div class="price-row">
+        <span class="price-label">Precio actual:</span>
+        <span class="price-value">${precioActual}€</span>
+    </div>
+    <div class="price-row">
+        <span class="price-label">Precio más alto:</span>
+        <span class="price-value ${esMaximo ? 'highest' : ''}">${maxPrecio}€</span>
+    </div>
+`;
+priceInfoContainer.appendChild(priceInfoDiv);
+
 const margen = 80;
 
 const ancho = 900 - margen * 2;
@@ -39,10 +58,6 @@ const alto = 350 - margen * 2;
 // Set SVG viewBox for responsiveness
 svg.setAttribute("viewBox", `0 0 900 350`);
 svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-
-const precios = lista.map(x => x.vale);
-
-const max = Math.max(...precios);
 
 const min = Math.min(...precios);
 
@@ -57,7 +72,7 @@ for (let i = 0; i < lista.length; i++) {
 
     const y =
         margen +
-        (max > min ? (max - lista[i].vale) * alto / (max - min) : alto / 2);
+        (maxPrecio > min ? (maxPrecio - lista[i].vale) * alto / (maxPrecio - min) : alto / 2);
 
     puntos += x + "," + y + " ";
 
@@ -87,7 +102,7 @@ svg.innerHTML +=
 // Etiquetas del eje Y (precios)
 const numIntervalos = 5;
 for (let i = 0; i <= numIntervalos; i++) {
-    const precio = min + (max - min) * (numIntervalos - i) / numIntervalos;
+    const precio = min + (maxPrecio - min) * (numIntervalos - i) / numIntervalos;
     const y = margen + i * (alto / numIntervalos);
     
     svg.innerHTML +=
@@ -163,7 +178,7 @@ for (let i = 0; i < lista.length; i++) {
 
     const y =
         margen +
-        (max > min ? (max - lista[i].vale) * alto / (max - min) : alto / 2);
+        (maxPrecio > min ? (maxPrecio - lista[i].vale) * alto / (maxPrecio - min) : alto / 2);
 
     svg.innerHTML +=
 

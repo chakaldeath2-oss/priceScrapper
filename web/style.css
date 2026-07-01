@@ -95,11 +95,11 @@ header{
 }
 
 .precio-subida {
-    color: #ff6b6b !important;
+    color: #51cf66 !important;
 }
 
 .precio-bajada {
-    color: #51cf66 !important;
+    color: #ff6b6b !important;
 }
 
 .nuevo{
@@ -157,7 +157,7 @@ grid-template-columns:repeat(2,1fr);
 .subida{
 
     text-align:center;
-    color:#00d000;
+    color:#51cf66;
     font-weight:bold;
     padding-bottom:12px;
 
@@ -166,7 +166,7 @@ grid-template-columns:repeat(2,1fr);
 .bajada{
 
     text-align:center;
-    color:#ff4040;
+    color:#ff6b6b;
     font-weight:bold;
     padding-bottom:12px;
 
@@ -217,6 +217,45 @@ grid-template-columns:repeat(2,1fr);
     background: rgba(0, 212, 255, 0.05);
     border-radius: 8px;
     border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.price-label {
+    color: #a0d4ff;
+    font-weight: 500;
+}
+
+.price-value {
+    color: #00d4ff;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.price-value.highest {
+    color: #51cf66;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.price-value.highest::before {
+    content: "👑";
 }
 
 .detalle-right {
@@ -297,11 +336,11 @@ grid-template-columns:repeat(2,1fr);
 }
 
 #tabla-historial table tbody td.precio-subida {
-    color: #ff6b6b !important;
+    color: #51cf66 !important;
 }
 
 #tabla-historial table tbody td.precio-bajada {
-    color: #51cf66 !important;
+    color: #ff6b6b !important;
 }
 
 /* RESPONSIVE */
