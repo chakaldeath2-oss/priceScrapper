@@ -48,7 +48,7 @@ for (const juego of juegos) {
 		const ultimo = lista[lista.length - 1];
 		const anterior = lista[lista.length - 2];
 
-		const diferencia = ultimo.vale - anterior.vale;
+		const diferencia = (ultimo.vale - anterior.vale).toFixed(2);
 
 		if (diferencia > 0) {
 
