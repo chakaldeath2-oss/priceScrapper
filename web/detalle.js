@@ -4,6 +4,16 @@ const id = params.get("id");
 
 const juego = juegos.find(g => g.id == id);
 
+// Generate barcode
+JsBarcode("#barcode", id, {
+    format: "EAN13",
+    width: 2,
+    height: 60,
+    displayValue: true,
+    fontSize: 12,
+    margin: 5
+});
+
 document.getElementById("titulo").textContent =
     juego.nombre;
 

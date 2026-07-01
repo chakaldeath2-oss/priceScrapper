@@ -13,6 +13,8 @@
 
 <link rel="stylesheet" href="style.css">
 
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+
 </head>
 
 <body>
@@ -29,8 +31,11 @@
 
 <div id="detalle">
 
-    <!-- LEFT COLUMN: Image and Price -->
+    <!-- LEFT COLUMN: Barcode, Image and Price -->
     <div class="detalle-left">
+        <div class="barcode-container">
+            <svg id="barcode"></svg>
+        </div>
         <img id="imagen" alt="Producto">
         <h2 id="precio"></h2>
     </div>

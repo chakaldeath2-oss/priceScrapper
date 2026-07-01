@@ -194,6 +194,22 @@ grid-template-columns:repeat(2,1fr);
     gap: 20px;
 }
 
+.barcode-container {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00d4ff;
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15);
+}
+
+.barcode-container svg {
+    display: block;
+    margin: 0 auto;
+}
+
 .detalle-left img {
     width: 100%;
     border-radius: 12px;
@@ -356,8 +372,14 @@ grid-template-columns:repeat(2,1fr);
         align-items: center;
     }
 
+    .barcode-container {
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+    }
+
     .detalle-left img {
-        width: 250px;
+        width: 200px;
         flex-shrink: 0;
     }
 
@@ -376,6 +398,11 @@ grid-template-columns:repeat(2,1fr);
 
     .detalle-left {
         flex-direction: column;
+    }
+
+    .barcode-container {
+        width: 100%;
+        height: auto;
     }
 
     .detalle-left img {
